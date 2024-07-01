@@ -1,10 +1,15 @@
+import { Route, Routes } from "react-router-dom";
 import "./Scss/app.scss";
+import Mainlayot from "./layouts/Mainlayot";
+import Home from "./pages/Home/Home";
 
 const App = () => {
   return (
-    <div className="App">
-      <h1>Hello</h1>
-    </div>
+    <Routes>
+      <Route path="/" element={<Mainlayot />}>
+        <Route path="" element={<Home />} />
+      </Route>
+    </Routes>
   );
 };
 

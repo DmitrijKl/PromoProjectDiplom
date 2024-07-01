@@ -2,6 +2,7 @@ import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
 import App from "./App";
 import { store } from "./Redux/store";
+import { BrowserRouter } from "react-router-dom";
 
 const container = document.getElementById("root");
 
@@ -10,7 +11,9 @@ if (container) {
 
   root.render(
     <Provider store={store}>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </Provider>,
   );
 } else {
