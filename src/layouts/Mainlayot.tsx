@@ -7,9 +7,11 @@ const Mainlayot = () => {
   return (
     <div className={styles.wrapper}>
       <Header />
-      <div className={styles.content}>
-        <Outlet />
-      </div>
+      <main className={styles.content}>
+        <div className="container">
+          <Outlet />
+        </div>
+      </main>
       <Footer />
     </div>
   );
