@@ -1,3 +1,11 @@
+header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+}
+
 .header {
   padding: 20px 100px;
   display: flex;
@@ -9,6 +17,7 @@
 
 .logo {
   display: flex;
+  cursor: pointer;
   .logoSvg {
     padding-right: 3px;
   }

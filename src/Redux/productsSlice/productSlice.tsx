@@ -1,0 +1,80 @@
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import type { PayloadAction } from "@reduxjs/toolkit";
+import axios from "axios";
+
+type ProductItem = {
+  amount: number;
+  description: string;
+  price: number;
+  img: string;
+  category: string;
+  rating: number;
+  id: string;
+};
+
+export enum Status {
+  LOADING = "loading",
+  SUCCESS = "success",
+  ERROR = "error",
+}
+
+interface PizzaSliceState {
+  items: ProductItem[];
+  status: Status;
+}
+
+const initialState: PizzaSliceState = {
+  items: [],
+  status: Status.LOADING,
+};
+
+export const fetchProducts = createAsyncThunk(
+  "pizza/fetchPizzasStatus",
+  async () => {
+    const { data } = await axios.get<ProductItem[]>(
+      `https://promodelivery-b94a3-default-rtdb.firebaseio.com/products.json`,
+    );
+    const loadedProducts = [];
+
+    for (const key in data) {
+      loadedProducts.push({
+        id: key,
+        img: data[key].img,
+        description: data[key].description,
+        price: data[key].price,
+        rating: data[key].rating,
+        amount: data[key].amount,
+        category: data[key].category,
+      });
+    }
+    return loadedProducts as ProductItem[];
+  },
+);
+
+export const productsSlice = createSlice({
+  name: "products",
+  initialState,
+  reducers: {
+    setItems(state, action: PayloadAction<ProductItem[]>) {
+      state.items = action.payload;
+    },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(fetchProducts.pending, (state) => {
+      state.status = Status.LOADING;
+      state.items = [];
+    });
+    builder.addCase(fetchProducts.fulfilled, (state, action) => {
+      state.items = action.payload;
+      state.status = Status.SUCCESS;
+    });
+    builder.addCase(fetchProducts.rejected, (state) => {
+      state.status = Status.ERROR;
+      state.items = [];
+    });
+  },
+});
+
+export const { setItems } = productsSlice.actions;
+
+export default productsSlice.reducer;

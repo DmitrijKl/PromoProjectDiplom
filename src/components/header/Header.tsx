@@ -6,12 +6,12 @@ const Header = () => {
   return (
     <header>
       <div className={styles.header}>
-        <div className={styles.logo}>
-          <Link to="/">
+        <Link to="/">
+          <div className={styles.logo}>
             <PromoLogo className={styles.logoSvg}></PromoLogo>
-          </Link>
-          <h2>Promo Delivery </h2>
-        </div>
+            <h2>Promo Delivery </h2>
+          </div>
+        </Link>
         <div className={styles.cart}>
           <span>0 ₽</span>
         </div>

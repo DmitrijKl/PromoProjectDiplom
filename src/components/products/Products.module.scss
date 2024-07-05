@@ -1,0 +1,18 @@
+.titleProducts {
+  display: inline-block;
+  font-size: 35px;
+  margin: 15px 0 25px 0;
+  cursor: pointer;
+  transition: all 0.3s;
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+.items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-column-gap: 11px;
+  grid-row-gap: 11px;
+  justify-items: center;
+}
