@@ -12,9 +12,11 @@ const Header = () => {
             <h2>Promo Delivery </h2>
           </div>
         </Link>
-        <div className={styles.cart}>
-          <span>0 ₽</span>
-        </div>
+        <Link to="/cart" className={styles.cartBtn}>
+          Корзина
+          <div className={styles.cartBtn__razdel}></div>
+          <div className={styles.cartBtn__amount}>0</div>
+        </Link>
       </div>
     </header>
   );

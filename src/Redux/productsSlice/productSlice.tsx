@@ -5,7 +5,7 @@ import axios from "axios";
 type ProductItem = {
   amount: number;
   description: string;
-  price: number;
+  price: string;
   img: string;
   category: string;
   rating: number;
@@ -18,12 +18,12 @@ export enum Status {
   ERROR = "error",
 }
 
-interface PizzaSliceState {
+interface ProductsSliceState {
   items: ProductItem[];
   status: Status;
 }
 
-const initialState: PizzaSliceState = {
+const initialState: ProductsSliceState = {
   items: [],
   status: Status.LOADING,
 };
@@ -31,7 +31,7 @@ const initialState: PizzaSliceState = {
 export const fetchProducts = createAsyncThunk(
   "pizza/fetchPizzasStatus",
   async () => {
-    const { data } = await axios.get<ProductItem[]>(
+    const { data } = await axios.get(
       `https://promodelivery-b94a3-default-rtdb.firebaseio.com/products.json`,
     );
     const loadedProducts = [];
@@ -47,6 +47,7 @@ export const fetchProducts = createAsyncThunk(
         category: data[key].category,
       });
     }
+    console.log(loadedProducts);
     return loadedProducts as ProductItem[];
   },
 );

@@ -1,40 +1,17 @@
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
 import styles from "./Products.module.scss";
 import Product from "./Product";
-import axios from "axios";
-
-interface IResponse {
-  description: string;
-  price: string;
-  img: string;
-  id: string;
-  rating: number;
-  amount: number;
-}
+import { fetchProducts } from "../../Redux/productsSlice/productSlice";
+import { useAppDispatch } from "../../Redux/store";
+import type { IRootState } from "../../Redux/store";
+import { useSelector } from "react-redux";
 
 const Products = () => {
-  const [products, setProducts] = useState<IResponse[]>([]);
+  const dispatch = useAppDispatch();
+  const products = useSelector((state: IRootState) => state.productSlice.items);
 
   useEffect(() => {
-    const dataAsync = async () => {
-      const products = await axios.get(
-        "https://promodelivery-b94a3-default-rtdb.firebaseio.com/products.json",
-      );
-      const loadedMeals = [];
-
-      for (const key in products.data) {
-        loadedMeals.push({
-          id: key,
-          img: products.data[key].img,
-          description: products.data[key].description,
-          price: products.data[key].price,
-          rating: products.data[key].rating,
-          amount: products.data[key].amount,
-        });
-      }
-      setProducts(loadedMeals);
-    };
-    dataAsync();
+    dispatch(fetchProducts());
   }, []);
 
   return (
