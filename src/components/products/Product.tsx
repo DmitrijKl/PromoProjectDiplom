@@ -1,7 +1,10 @@
-import React from "react";
+import type React from "react";
 import styles from "./Product.module.scss";
 import { IoIosStar } from "react-icons/io";
 import { IoMdCart } from "react-icons/io";
+import { useAppDispatch } from "../../Redux/store";
+import { addItem } from "../../Redux/cartSlice/cartSlice";
+import type { CartItem } from "../../Redux/cartSlice/cartSlice";
 
 interface ProductProps {
   description: string;
@@ -9,24 +12,45 @@ interface ProductProps {
   img: string;
   rating: number;
   amount: number;
+  category: string;
 }
 
-const Product = (props: ProductProps) => {
+const Product: React.FC<ProductProps> = ({
+  img,
+  description,
+  price,
+  rating,
+  amount,
+  category,
+}) => {
+  const dispatch = useAppDispatch();
+
+  const onClickAdd = () => {
+    const item: CartItem = {
+      description,
+      price,
+      img,
+      category,
+      rating,
+      count: 0,
+    };
+    dispatch(addItem(item));
+  };
   return (
     <li className={styles.cardProduct}>
-      <div>
-        <img className={styles.imgProduct} src={props.img} alt="Not_Found" />
+      <div className={styles.img}>
+        <img className={styles.imgProduct} src={img} alt="Not_Found" />
       </div>
       <div className={styles.ratingProduct}>
         <div className={styles.ratingProduct__container}>
-          <IoIosStar className={styles.rating} /> {props.rating}
+          <IoIosStar className={styles.rating} /> {rating}
         </div>
-        <div>{props.amount} шт</div>
+        <div>{amount} шт</div>
       </div>
-      <p className={styles.description}>{props.description}</p>
+      <p className={styles.description}>{description}</p>
       <div className={styles.cartAdd}>
-        <p className={styles.price}>{props.price} ₽</p>
-        <button>
+        <p className={styles.price}>{price} ₽</p>
+        <button onClick={onClickAdd}>
           <IoMdCart className={styles.cart} />
         </button>
       </div>

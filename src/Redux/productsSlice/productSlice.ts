@@ -31,24 +31,11 @@ const initialState: ProductsSliceState = {
 export const fetchProducts = createAsyncThunk(
   "pizza/fetchPizzasStatus",
   async () => {
-    const { data } = await axios.get(
-      `https://promodelivery-b94a3-default-rtdb.firebaseio.com/products.json`,
+    const { data } = await axios.get<ProductItem[]>(
+      `https://663df0f4e1913c476795f5cc.mockapi.io/products`,
     );
-    const loadedProducts = [];
-
-    for (const key in data) {
-      loadedProducts.push({
-        id: key,
-        img: data[key].img,
-        description: data[key].description,
-        price: data[key].price,
-        rating: data[key].rating,
-        amount: data[key].amount,
-        category: data[key].category,
-      });
-    }
-    console.log(loadedProducts);
-    return loadedProducts as ProductItem[];
+    console.log(data);
+    return data as ProductItem[];
   },
 );
 

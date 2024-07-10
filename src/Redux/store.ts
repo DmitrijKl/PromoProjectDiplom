@@ -1,9 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import productSlice from "./productsSlice/productSlice";
+import cartSlice from "./cartSlice/cartSlice";
 import { useDispatch } from "react-redux";
 
 export const store = configureStore({
-  reducer: { productSlice },
+  reducer: { productSlice, cartSlice },
 });
 
 export type IRootState = ReturnType<typeof store.getState>;

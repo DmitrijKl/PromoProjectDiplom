@@ -1,0 +1,17 @@
+.categories {
+  display: flex;
+  margin-bottom: 25px;
+  .category {
+    margin: 0 20px 0 0;
+    font-size: 18px;
+    color: rgb(120, 124, 135);
+    padding: 6px 16px;
+    background-color: rgb(233, 234, 234);
+    border-radius: 5px;
+    cursor: pointer;
+    &:hover {
+      background-color: rgb(236, 239, 239);
+      color: black;
+    }
+  }
+}

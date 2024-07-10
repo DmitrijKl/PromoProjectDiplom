@@ -1,8 +1,16 @@
 import styles from "./header.module.scss";
 import PromoLogo from "../../assets/PromoLogo.svg?react";
 import { Link } from "react-router-dom";
+import type { IRootState } from "../../Redux/store";
+import { useSelector } from "react-redux";
 
 const Header = () => {
+  const { items } = useSelector((state: IRootState) => state.cartSlice);
+
+  const totalCount = items.reduce((sum: number, item) => {
+    return sum + item.count;
+  }, 0);
+
   return (
     <header>
       <div className={styles.header}>
@@ -15,7 +23,7 @@ const Header = () => {
         <Link to="/cart" className={styles.cartBtn}>
           Корзина
           <div className={styles.cartBtn__razdel}></div>
-          <div className={styles.cartBtn__amount}>0</div>
+          <div className={styles.cartBtn__amount}>{totalCount}</div>
         </Link>
       </div>
     </header>

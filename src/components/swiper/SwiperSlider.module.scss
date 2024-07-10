@@ -15,10 +15,14 @@ div .swiperSlide {
   align-items: center;
   justify-content: center;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 45px;
-  :hover {
-    fill: green;
+  &:hover {
+    color: green;
+    background-color: rgb(245, 245, 230);
   }
-
+  &:hover:disabled {
+    color: green;
+    background-color: rgba(0, 0, 0, 0.12);
+  }
   .prevArrow {
     transition: all 0.4s;
     width: 25px;
@@ -39,11 +43,16 @@ div .swiperSlide {
   align-items: center;
   justify-content: center;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 45px;
-  :hover {
-    fill: green;
+  &:hover {
+    color: green;
+    background-color: rgb(245, 245, 230);
+  }
+  &:hover:disabled {
+    color: green;
+    background-color: rgba(0, 0, 0, 0.12);
   }
   .nextArrow {
-    transition: all 0.4s;
+    transition: all 0.2s;
     width: 25px;
     height: 25px;
   }

@@ -17,7 +17,7 @@ const SwiperSlider = () => {
     <Swiper
       modules={[Navigation, Pagination, Scrollbar, A11y]}
       spaceBetween={10}
-      slidesPerView={"auto"}
+      slidesPerView={3}
       navigation={{
         prevEl: `.prevSlide`,
         nextEl: ".nextSlide",
