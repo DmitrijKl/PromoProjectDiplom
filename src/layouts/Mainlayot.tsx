@@ -9,7 +9,9 @@ const Mainlayot = () => {
       <Header />
       <main className={styles.content}>
         <div className="container">
-          <Outlet />
+          <div className={styles.contentMain}>
+            <Outlet />
+          </div>
         </div>
       </main>
       <Footer />

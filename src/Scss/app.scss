@@ -2,9 +2,7 @@
 
 html {
   scrollbar-gutter: stable;
-}
-body {
-  background-color: #f6f6f6;
+  overflow-y: scroll;
 }
 .container {
   padding: 0 100px;

@@ -5,7 +5,7 @@ import axios from "axios";
 type ProductItem = {
   amount: number;
   description: string;
-  price: string;
+  price: number;
   img: string;
   category: string;
   rating: number;

@@ -9,6 +9,7 @@ import Arbuz from "../../assets/SwiperImg/Арбуз с дыней.webp";
 import Dzin from "../../assets/SwiperImg/ДжинТоник.webp";
 import Vipusk from "../../assets/SwiperImg/Выпускной.webp";
 import Super from "../../assets/SwiperImg/СуперЦена.webp";
+import Malina from "../../assets/SwiperImg/Малина.webp";
 import styles from "./SwiperSlider.module.scss";
 import "swiper/css";
 
@@ -34,6 +35,9 @@ const SwiperSlider = () => {
       </SwiperSlide>
       <SwiperSlide className={styles.swiperSlide}>
         <SwiperCard img={Arbuz} />
+      </SwiperSlide>
+      <SwiperSlide className={styles.swiperSlide}>
+        <SwiperCard img={Malina} />
       </SwiperSlide>
       <SwiperSlide className={styles.swiperSlide}>
         <SwiperCard img={Dzin} />

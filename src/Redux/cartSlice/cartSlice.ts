@@ -3,13 +3,13 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 import { calcTotalPrice } from "../../utils/calcTotalPrice";
 
 export type CartItem = {
-  amount?: number;
+  amount: number;
   description: string;
-  price: string;
+  price: number;
   img: string;
   category: string;
   rating: number;
-  id?: string;
+  id: string;
   count: number;
 };
 

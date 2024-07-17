@@ -29,6 +29,7 @@ const Products = () => {
             rating={element.rating}
             amount={element.amount}
             category={element.category}
+            id={element.id}
           />
         ))}
       </ul>

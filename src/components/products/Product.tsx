@@ -8,11 +8,12 @@ import type { CartItem } from "../../Redux/cartSlice/cartSlice";
 
 interface ProductProps {
   description: string;
-  price: string;
+  price: number;
   img: string;
   rating: number;
   amount: number;
   category: string;
+  id: string;
 }
 
 const Product: React.FC<ProductProps> = ({
@@ -22,6 +23,7 @@ const Product: React.FC<ProductProps> = ({
   rating,
   amount,
   category,
+  id,
 }) => {
   const dispatch = useAppDispatch();
 
@@ -32,10 +34,13 @@ const Product: React.FC<ProductProps> = ({
       img,
       category,
       rating,
+      id,
+      amount,
       count: 0,
     };
     dispatch(addItem(item));
   };
+
   return (
     <li className={styles.cardProduct}>
       <div className={styles.img}>
@@ -50,7 +55,7 @@ const Product: React.FC<ProductProps> = ({
       <p className={styles.description}>{description}</p>
       <div className={styles.cartAdd}>
         <p className={styles.price}>{price} ₽</p>
-        <button onClick={onClickAdd}>
+        <button className={styles.cartAdd} onClick={onClickAdd}>
           <IoMdCart className={styles.cart} />
         </button>
       </div>

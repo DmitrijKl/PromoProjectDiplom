@@ -1,6 +1,12 @@
 .wrapper {
-  height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   .content {
-    margin-top: 32px;
+    background-color: #f6f6f6;
+    flex-grow: 1;
+    .contentMain {
+      padding: 32px 0;
+    }
   }
 }
