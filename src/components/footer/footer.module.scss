@@ -1,0 +1,70 @@
+.footerLinks {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.footer {
+  padding: 22px 100px;
+  .footerSectionTwo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    font-weight: 500;
+    p {
+      opacity: 0.6;
+    }
+    div {
+      cursor: pointer;
+      transition: all 0.3s;
+      &:hover {
+        opacity: 0.6;
+      }
+    }
+  }
+  .footerSectionOne {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f6f6f6;
+    .IconsSC {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      cursor: pointer;
+      a {
+        transition: all 0.3s;
+        &:hover {
+          opacity: 0.6;
+          transform: scale(1.04);
+        }
+      }
+    }
+    .footerContacts {
+      font-size: 20px;
+      font-weight: 500;
+      text-align: right;
+      .tel {
+        transition: all 0.2s;
+        &:hover {
+          opacity: 0.6;
+        }
+      }
+    }
+    .listLinks {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      font-size: 20px;
+      font-weight: bold;
+      li a {
+        transition: all 0.2s;
+        &:hover {
+          opacity: 0.6;
+        }
+      }
+    }
+  }
+}
