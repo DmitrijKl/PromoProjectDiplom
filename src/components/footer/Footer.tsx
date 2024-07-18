@@ -1,4 +1,4 @@
-import React from "react";
+import type React from "react";
 import styles from "./footer.module.scss";
 import PromoLogo from "../../assets/PromoLogo.svg?react";
 import IconVK from "../../assets/social media/VK.svg?react";
@@ -6,8 +6,7 @@ import IconTelegram from "../../assets/social media/Telegram.svg?react";
 import IconYouTube from "../../assets/social media/YouTube.svg?react";
 import { Link } from "react-router-dom";
 
-const Footer = () => {
-  const listLinks = ["О нас", "Вакансии", "Контакты"];
+const Footer: React.FC = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.footerSectionOne}>

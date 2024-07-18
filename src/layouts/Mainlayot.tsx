@@ -1,9 +1,10 @@
 import { Outlet } from "react-router-dom";
+import type React from "react";
 import styles from "./MainLayouts.module.scss";
 import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
 
-const Mainlayot = () => {
+const Mainlayot: React.FC = () => {
   return (
     <div className={styles.wrapper}>
       <Header />

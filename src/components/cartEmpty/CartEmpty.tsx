@@ -1,9 +1,9 @@
-import React from "react";
+import type React from "react";
 import styles from "./CartEmpty.module.scss";
 import { Link } from "react-router-dom";
 import Brokoly from "../../assets/Корзина_броколи.svg";
 
-const CartEmpty = () => {
+const CartEmpty: React.FC = () => {
   return (
     <div className={styles.cart__empty}>
       <div>

@@ -54,10 +54,17 @@
       border-radius: 30px;
       font-size: 18px;
       font-weight: bold;
+      user-select: none;
+      .inActive {
+        opacity: 0.3;
+      }
       .counter {
         transition: all 0.3s;
         &:hover {
           opacity: 0.8;
+        }
+        &.inActive:hover {
+          opacity: 0.3;
         }
         &:active {
           transform: translateY(1px);

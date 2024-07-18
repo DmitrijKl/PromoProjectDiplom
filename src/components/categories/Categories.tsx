@@ -1,7 +1,7 @@
-import React from "react";
+import type React from "react";
 import styles from "./Categories.module.scss";
 
-const Categories = () => {
+const Categories: React.FC = () => {
   const categories = ["Все", "Хлеб", "Вода", "Молоко"];
   return (
     <ul className={styles.categories}>

@@ -1,10 +1,11 @@
+import type React from "react";
 import styles from "./header.module.scss";
 import PromoLogo from "../../assets/PromoLogo.svg?react";
 import { Link } from "react-router-dom";
 import type { IRootState } from "../../Redux/store";
 import { useSelector } from "react-redux";
 
-const Header = () => {
+const Header: React.FC = () => {
   const { items } = useSelector((state: IRootState) => state.cartSlice);
 
   const totalCount = items.reduce((sum: number, item) => {

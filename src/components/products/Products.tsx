@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import styles from "./Products.module.scss";
+import type React from "react";
 import Product from "./Product";
 import { fetchProducts } from "../../Redux/productsSlice/productSlice";
 import { useAppDispatch } from "../../Redux/store";
@@ -7,7 +8,7 @@ import type { IRootState } from "../../Redux/store";
 import { useSelector } from "react-redux";
 import Categories from "../categories/Categories";
 
-const Products = () => {
+const Products: React.FC = () => {
   const dispatch = useAppDispatch();
   const products = useSelector((state: IRootState) => state.productSlice.items);
 

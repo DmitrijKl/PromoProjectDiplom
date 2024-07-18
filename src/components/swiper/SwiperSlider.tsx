@@ -1,6 +1,7 @@
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+import type React from "react";
 import { GoChevronLeft } from "react-icons/go";
 import { GoChevronRight } from "react-icons/go";
 import SwiperCard from "./SwiperCard";
@@ -13,7 +14,7 @@ import Malina from "../../assets/SwiperImg/Малина.webp";
 import styles from "./SwiperSlider.module.scss";
 import "swiper/css";
 
-const SwiperSlider = () => {
+const SwiperSlider: React.FC = () => {
   return (
     <Swiper
       modules={[Navigation, Pagination, Scrollbar, A11y]}

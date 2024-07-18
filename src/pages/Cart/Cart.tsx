@@ -23,6 +23,7 @@ const Cart: React.FC = () => {
       dispatch(clearItems());
     }
   };
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

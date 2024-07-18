@@ -4,7 +4,11 @@ import { FaCircleMinus } from "react-icons/fa6";
 import { FaCirclePlus } from "react-icons/fa6";
 import { IoMdCloseCircleOutline } from "react-icons/io";
 import { useAppDispatch } from "../../Redux/store";
-import { addItem, minusItem } from "../../Redux/cartSlice/cartSlice";
+import {
+  addItem,
+  minusItem,
+  removeItem,
+} from "../../Redux/cartSlice/cartSlice";
 import type { CartItem as CartItemType } from "../../Redux/cartSlice/cartSlice";
 
 interface CartItemProps {
@@ -33,6 +37,9 @@ const CartItem: React.FC<CartItemProps> = ({
   const priceProduct = (price * count).toFixed(2);
 
   const onClickMinus = () => {
+    if (count === 1) {
+      return;
+    }
     dispatch(minusItem(id));
   };
 
@@ -42,6 +49,10 @@ const CartItem: React.FC<CartItemProps> = ({
         id,
       } as CartItemType),
     );
+  };
+
+  const onClickDeleteItem = () => {
+    dispatch(removeItem(id));
   };
 
   return (
@@ -55,7 +66,7 @@ const CartItem: React.FC<CartItemProps> = ({
           <div className={styles.cartCounter}>
             <FaCircleMinus
               onClick={onClickMinus}
-              className={`${styles.counter} ${styles.itemMinus}`}
+              className={`${styles.counter} ${styles.itemMinus} ${count > 1 ? "" : styles.inActive}`}
             />
             <div className={styles.itemCounts}>{count}</div>
             <FaCirclePlus
@@ -66,7 +77,10 @@ const CartItem: React.FC<CartItemProps> = ({
         </div>
         <div className={styles.cartItemPrice}>{priceProduct} ₽</div>
         <div>
-          <IoMdCloseCircleOutline className={styles.productClear} />
+          <IoMdCloseCircleOutline
+            onClick={onClickDeleteItem}
+            className={styles.productClear}
+          />
         </div>
       </div>
     </div>
