@@ -2,15 +2,30 @@ import type React from "react";
 import styles from "./header.module.scss";
 import PromoLogo from "../../assets/PromoLogo.svg?react";
 import { Link } from "react-router-dom";
-import type { IRootState } from "../../Redux/store";
+import { useAppDispatch, type IRootState } from "../../Redux/store";
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { addItemsFromLocalStorage } from "../../Redux/cartSlice/cartSlice";
 
 const Header: React.FC = () => {
   const { items } = useSelector((state: IRootState) => state.cartSlice);
+  const dispatch = useAppDispatch();
 
   const totalCount = items.reduce((sum: number, item) => {
     return sum + item.count;
   }, 0);
+
+  useEffect(() => {
+    const products = localStorage.getItem("cart");
+    if (products) {
+      dispatch(addItemsFromLocalStorage(JSON.parse(products)));
+    }
+  }, []);
+
+  useEffect(() => {
+    const json = JSON.stringify(items);
+    localStorage.setItem("cart", json);
+  }, [items]);
 
   return (
     <header>
