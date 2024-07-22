@@ -5,8 +5,17 @@ import IconVK from "../../assets/social media/VK.svg?react";
 import IconTelegram from "../../assets/social media/Telegram.svg?react";
 import IconYouTube from "../../assets/social media/YouTube.svg?react";
 import { Link } from "react-router-dom";
+import PopUpConfident from "../popUpConfident/PopUpConfident";
+import { useState } from "react";
 
 const Footer: React.FC = () => {
+  const [popUpActive, setPopUpActive] = useState(false);
+
+  const handleActivePopUp = () => {
+    setPopUpActive((prevState) => !prevState);
+    console.log(popUpActive);
+  };
+
   return (
     <footer className={styles.footer}>
       <div className={styles.footerSectionOne}>
@@ -57,8 +66,9 @@ const Footer: React.FC = () => {
       </div>
       <div className={styles.footerSectionTwo}>
         <p>© PROMO 2012–2024</p>
-        <div>Политика конфиденциальности</div>
+        <div onClick={handleActivePopUp}>Политика конфиденциальности</div>
       </div>
+      <PopUpConfident popUpActive={popUpActive} />
     </footer>
   );
 };

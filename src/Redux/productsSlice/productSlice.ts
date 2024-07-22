@@ -29,10 +29,10 @@ const initialState: ProductsSliceState = {
 };
 
 export const fetchProducts = createAsyncThunk(
-  "pizza/fetchPizzasStatus",
-  async () => {
+  "products/fetchProductsStatus",
+  async (currentPage: number) => {
     const { data } = await axios.get<ProductItem[]>(
-      `https://663df0f4e1913c476795f5cc.mockapi.io/products`,
+      `https://663df0f4e1913c476795f5cc.mockapi.io/products?page=${currentPage}&limit=4`,
     );
     console.log(data);
     return data as ProductItem[];

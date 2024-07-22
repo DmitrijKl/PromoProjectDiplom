@@ -11,6 +11,14 @@
   .description {
     font-weight: 500;
     margin-bottom: 10px;
+    white-space: initial;
+    height: 65px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    word-break: break-word;
   }
   .img {
     cursor: pointer;
