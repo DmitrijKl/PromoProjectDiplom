@@ -13,7 +13,6 @@ const Footer: React.FC = () => {
 
   const handleActivePopUp = () => {
     setPopUpActive((prevState) => !prevState);
-    console.log(popUpActive);
   };
 
   return (
@@ -68,7 +67,11 @@ const Footer: React.FC = () => {
         <p>© PROMO 2012–2024</p>
         <div onClick={handleActivePopUp}>Политика конфиденциальности</div>
       </div>
-      <PopUpConfident popUpActive={popUpActive} />
+      {popUpActive ? (
+        <PopUpConfident handleActivePopUp={handleActivePopUp} />
+      ) : (
+        ""
+      )}
     </footer>
   );
 };

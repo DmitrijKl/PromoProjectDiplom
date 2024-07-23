@@ -9,7 +9,7 @@ export interface FilterSliceState {
 
 const initialState: FilterSliceState = {
   searchValue: "",
-  categoryName: "",
+  categoryName: "Все",
   currentPage: 1,
 };
 
@@ -17,7 +17,7 @@ export const filterSlice = createSlice({
   name: "filter",
   initialState,
   reducers: {
-    setCategoryId(state, action: PayloadAction<string>) {
+    setCategoryName(state, action: PayloadAction<string>) {
       state.categoryName = action.payload;
     },
     setCurrentPage(state, action: PayloadAction<number>) {
@@ -29,7 +29,7 @@ export const filterSlice = createSlice({
   },
 });
 
-export const { setCategoryId, setCurrentPage, setSearchValue } =
+export const { setCategoryName, setCurrentPage, setSearchValue } =
   filterSlice.actions;
 
 export default filterSlice.reducer;

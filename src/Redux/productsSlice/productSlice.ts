@@ -27,12 +27,17 @@ const initialState: ProductsSliceState = {
   items: [],
   status: Status.LOADING,
 };
+type FetchProducts = {
+  categoryName: string;
+  currentPage: number;
+};
 
 export const fetchProducts = createAsyncThunk(
   "products/fetchProductsStatus",
-  async (currentPage: number) => {
+  async ({ currentPage, categoryName }: FetchProducts) => {
+    const category = categoryName === "Все" ? "" : categoryName;
     const { data } = await axios.get<ProductItem[]>(
-      `https://663df0f4e1913c476795f5cc.mockapi.io/products?page=${currentPage}&limit=4`,
+      `https://663df0f4e1913c476795f5cc.mockapi.io/products?page=${currentPage}&limit=4&category=${category}`,
     );
     console.log(data);
     return data as ProductItem[];

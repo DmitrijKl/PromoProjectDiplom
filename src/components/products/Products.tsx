@@ -17,16 +17,17 @@ const Products: React.FC = () => {
     (state: IRootState) => state.productSlice,
   );
 
-  const { currentPage } = useSelector((state: IRootState) => state.filterSlice);
-
+  const { currentPage, categoryName } = useSelector(
+    (state: IRootState) => state.filterSlice,
+  );
   useEffect(() => {
-    dispatch(fetchProducts(currentPage));
-  }, [currentPage]);
+    dispatch(fetchProducts({ currentPage, categoryName }));
+  }, [currentPage, categoryName]);
 
   return (
     <section>
       <h2 className={styles.titleProducts}>Все продукты</h2>
-      <Categories />
+      <Categories categoryName={categoryName} />
       {status === "error" ? (
         <h1>Ошибка при получении данных...</h1>
       ) : (
