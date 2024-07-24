@@ -9,7 +9,7 @@ import PopUpConfident from "../popUpConfident/PopUpConfident";
 import { useState } from "react";
 
 const Footer: React.FC = () => {
-  const [popUpActive, setPopUpActive] = useState(false);
+  const [popUpActive, setPopUpActive] = useState<boolean>(false);
 
   const handleActivePopUp = () => {
     setPopUpActive((prevState) => !prevState);

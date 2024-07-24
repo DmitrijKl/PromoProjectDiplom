@@ -11,6 +11,7 @@ const PopUpConfident: React.FC<PopUpConfidentProps> = ({
   handleActivePopUp,
 }) => {
   const containerPopUp = document.getElementById("portal-root");
+
   useEffect(() => {
     // document.body.style.overflowY = "hidden";
     return () => {

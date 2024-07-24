@@ -25,7 +25,7 @@ const Products: React.FC = () => {
   }, [currentPage, categoryName]);
 
   return (
-    <section>
+    <section id="products">
       <h2 className={styles.titleProducts}>Все продукты</h2>
       <Categories categoryName={categoryName} />
       {status === "error" ? (

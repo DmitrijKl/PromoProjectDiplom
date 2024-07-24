@@ -1,15 +1,17 @@
 import type React from "react";
 import styles from "./header.module.scss";
 import PromoLogo from "../../assets/PromoLogo.svg?react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useAppDispatch, type IRootState } from "../../Redux/store";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { addItemsFromLocalStorage } from "../../Redux/cartSlice/cartSlice";
+import SearchInput from "../searchInput/SearchInput";
 
 const Header: React.FC = () => {
   const { items } = useSelector((state: IRootState) => state.cartSlice);
   const dispatch = useAppDispatch();
+  const location = useLocation();
 
   const totalCount = items.reduce((sum: number, item) => {
     return sum + item.count;
@@ -36,11 +38,14 @@ const Header: React.FC = () => {
             <h2>Promo Delivery </h2>
           </div>
         </Link>
-        <Link to="/cart" className={styles.cartBtn}>
-          Корзина
-          <div className={styles.cartBtn__razdel}></div>
-          <div className={styles.cartBtn__amount}>{totalCount}</div>
-        </Link>
+        {location.pathname !== "/cart" && <SearchInput />}
+        {location.pathname !== "/cart" && (
+          <Link to="/cart" className={styles.cartBtn}>
+            Корзина
+            <div className={styles.cartBtn__razdel}></div>
+            <div className={styles.cartBtn__amount}>{totalCount}</div>
+          </Link>
+        )}
       </div>
     </header>
   );

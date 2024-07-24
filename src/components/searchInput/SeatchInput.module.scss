@@ -1,0 +1,49 @@
+.root {
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 4px 18px;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  .clearInput {
+    font-size: 30px;
+    margin-right: 5px;
+    cursor: pointer;
+    transition: all 0.2s;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+  .inputIcon {
+    cursor: pointer;
+    padding: 0 17px;
+    background-color: red;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    border-radius: 8px;
+    &:hover {
+      opacity: 0.8;
+    }
+    .Icon {
+      fill: white;
+      font-size: 22px;
+    }
+    h3 {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 18px;
+      font-weight: 500;
+      margin-left: 8px;
+    }
+  }
+  input {
+    font-size: 18px;
+    width: 100%;
+    border: none;
+    margin-left: 10px;
+    width: 400px;
+  }
+}
