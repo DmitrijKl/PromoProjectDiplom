@@ -17,12 +17,13 @@ const Products: React.FC = () => {
     (state: IRootState) => state.productSlice,
   );
 
-  const { currentPage, categoryName } = useSelector(
+  const { currentPage, categoryName, searchValue } = useSelector(
     (state: IRootState) => state.filterSlice,
   );
   useEffect(() => {
-    dispatch(fetchProducts({ currentPage, categoryName }));
-  }, [currentPage, categoryName]);
+    console.log(searchValue);
+    dispatch(fetchProducts({ currentPage, categoryName, searchValue }));
+  }, [currentPage, categoryName, searchValue]);
 
   return (
     <section id="products">
