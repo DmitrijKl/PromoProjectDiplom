@@ -7,6 +7,7 @@ import { useAppDispatch } from "../../Redux/store";
 import { addItem } from "../../Redux/cartSlice/cartSlice";
 import type { CartItem } from "../../Redux/cartSlice/cartSlice";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 interface ProductProps {
   description: string;
@@ -50,9 +51,11 @@ const Product: React.FC<ProductProps> = ({
 
   return (
     <li className={styles.cardProduct}>
-      <div className={styles.img}>
-        <img className={styles.imgProduct} src={img} alt="Not_Found" />
-      </div>
+      <Link to={`product/${id}`}>
+        <div className={styles.img}>
+          <img className={styles.imgProduct} src={img} alt="Not_Found" />
+        </div>
+      </Link>
       <div className={styles.ratingProduct}>
         <div className={styles.ratingProduct__container}>
           <IoIosStar className={styles.rating} /> {rating}

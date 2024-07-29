@@ -1,0 +1,25 @@
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 50vh;
+  .description {
+    width: 500px;
+    text-align: center;
+    color: rgb(120, 124, 135);
+    font-size: 20px;
+  }
+  .backHome {
+    font-size: 16px;
+    margin-top: 30px;
+    padding: 10px 30px;
+    background-color: rgb(80, 185, 70);
+    border-radius: 8px;
+    color: white;
+    transition: all 0.2s;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}

@@ -12,7 +12,6 @@ const Header: React.FC = () => {
   const { items } = useSelector((state: IRootState) => state.cartSlice);
   const dispatch = useAppDispatch();
   const location = useLocation();
-
   const totalCount = items.reduce((sum: number, item) => {
     return sum + item.count;
   }, 0);
@@ -38,7 +37,8 @@ const Header: React.FC = () => {
             <h2>Promo Delivery </h2>
           </div>
         </Link>
-        {location.pathname !== "/cart" && <SearchInput />}
+        {location.pathname !== "/cart" &&
+          !location.pathname.includes("/product/") && <SearchInput />}
         {location.pathname !== "/cart" && (
           <Link to="/cart" className={styles.cartBtn}>
             Корзина

@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 
-type ProductItem = {
+export type ProductItem = {
   amount: number;
   description: string;
   price: number;
