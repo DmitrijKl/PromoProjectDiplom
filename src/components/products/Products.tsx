@@ -21,7 +21,6 @@ const Products: React.FC = () => {
     (state: IRootState) => state.filterSlice,
   );
   useEffect(() => {
-    console.log(searchValue);
     dispatch(fetchProducts({ currentPage, categoryName, searchValue }));
   }, [currentPage, categoryName, searchValue]);
 

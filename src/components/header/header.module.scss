@@ -14,6 +14,38 @@ header {
   border-bottom: 1px solid #f3f2f2;
   background-color: #fff;
   height: 89px;
+  .cartAuthContainer {
+    display: flex;
+    align-items: center;
+    .userLogin {
+      display: flex;
+      align-items: center;
+      box-shadow: rgba(0, 0, 0, 0.05) 0px 4px 18px;
+      border-radius: 20px;
+      padding: 4px 9px;
+      margin-right: 20px;
+      button {
+        margin-right: 0;
+      }
+      .userPhoto {
+        margin-right: 10px;
+      }
+    }
+    .Auth {
+      background-color: white;
+      border: none;
+      color: black;
+      font-weight: 500;
+      margin-right: 20px;
+      word-spacing: -2px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 20px;
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
   .cartBtn {
     display: flex;
     align-items: center;

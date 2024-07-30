@@ -34,7 +34,6 @@ const Product: React.FC<ProductProps> = ({
     state.cartSlice.items.find((item: CartItem) => item.id === id),
   );
   const addedCount: number = cartItem ? cartItem.count : 0;
-
   const onClickAdd = () => {
     const item: CartItem = {
       description,
