@@ -5,12 +5,14 @@ import CartItem from "../../components/cartItem/CartItem";
 import CartEmpty from "../../components/cartEmpty/CartEmpty";
 import styles from "./Cart.module.scss";
 import { MdOutlineDeleteForever } from "react-icons/md";
-import { useAppDispatch } from "../../Redux/store";
+import { useAppDispatch, useAppSelector } from "../../Redux/store";
 import { clearItems } from "../../Redux/cartSlice/cartSlice";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { IoBackspaceSharp } from "react-icons/io5";
 
 const Cart: React.FC = () => {
-  const { items, totalPrice } = useSelector(cartSelector);
+  const { items, totalPrice } = useAppSelector(cartSelector);
   const dispatch = useAppDispatch();
   const totalCount = items.reduce((sum: number, item) => {
     return sum + item.count;
@@ -52,6 +54,15 @@ const Cart: React.FC = () => {
           Сумма заказа:
           <b className={styles.cartProductsSum}> {totalPrice.toFixed(2)} ₽</b>
         </span>
+      </div>
+      <div className={styles.cartOrder}>
+        <Link to="/">
+          <button className={styles.backHome}>
+            <IoBackspaceSharp className={styles.iconBack} />
+            Вернуться назад
+          </button>
+        </Link>
+        <button className={styles.btnOrder}>Оформить заказ</button>
       </div>
     </div>
   );

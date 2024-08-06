@@ -8,17 +8,17 @@ import Rating from "@mui/material/Rating";
 import { FaCartShopping } from "react-icons/fa6";
 import { addItem } from "../../Redux/cartSlice/cartSlice";
 import type { CartItem } from "../../Redux/cartSlice/cartSlice";
-import { useAppDispatch } from "../../Redux/store";
+import { useAppDispatch, useAppSelector } from "../../Redux/store";
 import type { IRootState } from "../../Redux/store";
-import { useSelector } from "react-redux";
 import { CircularProgress } from "@mui/material";
+import { cartItemSelector } from "../../Redux/cartSlice/cartSelectors";
 
 const ProductFull: React.FC = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const cartItem = useSelector((state: IRootState) =>
-    state.cartSlice.items.find((item: CartItem) => item.id === id),
+  const cartItem = useAppSelector((state: IRootState) =>
+    cartItemSelector(state, id),
   );
 
   const [product, setProduct] = useState<ProductItem>();

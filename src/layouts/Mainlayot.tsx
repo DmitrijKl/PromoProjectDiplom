@@ -6,7 +6,7 @@ import Footer from "../components/footer/Footer";
 
 const Mainlayot: React.FC = () => {
   return (
-    <div className={styles.wrapper}>
+    <div id="wrapper" className={styles.wrapper}>
       <Header />
       <main className={styles.content}>
         <div className="container">

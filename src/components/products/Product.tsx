@@ -3,11 +3,11 @@ import styles from "./Product.module.scss";
 import { IoIosStar } from "react-icons/io";
 import { IoMdCart } from "react-icons/io";
 import type { IRootState } from "../../Redux/store";
-import { useAppDispatch } from "../../Redux/store";
+import { useAppDispatch, useAppSelector } from "../../Redux/store";
 import { addItem } from "../../Redux/cartSlice/cartSlice";
 import type { CartItem } from "../../Redux/cartSlice/cartSlice";
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { cartItemSelector } from "../../Redux/cartSlice/cartSelectors";
 
 interface ProductProps {
   description: string;
@@ -30,10 +30,12 @@ const Product: React.FC<ProductProps> = ({
 }) => {
   const dispatch = useAppDispatch();
 
-  const cartItem = useSelector((state: IRootState) =>
-    state.cartSlice.items.find((item: CartItem) => item.id === id),
+  const cartItem = useAppSelector((state: IRootState) =>
+    cartItemSelector(state, id),
   );
+
   const addedCount: number = cartItem ? cartItem.count : 0;
+
   const onClickAdd = () => {
     const item: CartItem = {
       description,

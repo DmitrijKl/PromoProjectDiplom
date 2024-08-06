@@ -2,14 +2,14 @@ import { configureStore } from "@reduxjs/toolkit";
 import productSlice from "./productsSlice/productSlice";
 import cartSlice from "./cartSlice/cartSlice";
 import filterSlice from "./filterSlice/filterSlice";
-import userSlice from "./userSlice/userSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 export const store = configureStore({
-  reducer: { productSlice, cartSlice, filterSlice, userSlice },
+  reducer: { productSlice, cartSlice, filterSlice },
 });
 
 export type IRootState = ReturnType<typeof store.getState>;
 
 export type AppDispatch = typeof store.dispatch;
 export const useAppDispatch = useDispatch.withTypes<AppDispatch>();
+export const useAppSelector = useSelector.withTypes<IRootState>();

@@ -14,8 +14,14 @@ const PopUpConfident: React.FC<PopUpConfidentProps> = ({
   const containerPopUp = document.getElementById("portal-root");
 
   useEffect(() => {
-    // document.body.style.overflowY = "hidden";
+    const wrapper = document.getElementById("wrapper");
+    if (wrapper) {
+      let lockPaddingValue = window.innerWidth - wrapper.offsetWidth + "px";
+      document.body.style.paddingRight = lockPaddingValue;
+    }
+    document.body.style.overflowY = "hidden";
     return () => {
+      document.body.style.paddingRight = "0px";
       document.body.style.overflowY = "scroll";
     };
   }, []);

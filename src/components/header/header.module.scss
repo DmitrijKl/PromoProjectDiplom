@@ -17,6 +17,9 @@ header {
   .cartAuthContainer {
     display: flex;
     align-items: center;
+    .loading {
+      margin-right: 30px;
+    }
     .userLogin {
       display: flex;
       align-items: center;

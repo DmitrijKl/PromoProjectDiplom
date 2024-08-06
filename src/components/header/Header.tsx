@@ -8,7 +8,7 @@ import { useEffect } from "react";
 import { addItemsFromLocalStorage } from "../../Redux/cartSlice/cartSlice";
 import SearchInput from "../searchInput/SearchInput";
 import { useAuth0 } from "@auth0/auth0-react";
-import { Avatar } from "@mui/material";
+import { Avatar, CircularProgress } from "@mui/material";
 
 const Header: React.FC = () => {
   const { items } = useSelector((state: IRootState) => state.cartSlice);
@@ -41,10 +41,11 @@ const Header: React.FC = () => {
             <h2>Promo Delivery </h2>
           </div>
         </Link>
-        {location.pathname !== "/cart" &&
-          !location.pathname.includes("/product/") && <SearchInput />}
-
+        {location.pathname === "/" && <SearchInput />}
         <div className={styles.cartAuthContainer}>
+          {isLoading && (
+            <CircularProgress size="25px" className={styles.loading} />
+          )}
           {!isLoading && !user && (
             <button onClick={() => loginWithRedirect()} className={styles.Auth}>
               Log in

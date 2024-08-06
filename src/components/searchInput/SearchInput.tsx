@@ -2,7 +2,7 @@ import type React from "react";
 import styles from "./SeatchInput.module.scss";
 import { IoCloseOutline } from "react-icons/io5";
 import { AiFillProduct } from "react-icons/ai";
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useAppDispatch } from "../../Redux/store";
 import { setSearchValue } from "../../Redux/filterSlice/filterSlice";
 
@@ -18,6 +18,12 @@ const SearchInput: React.FC = () => {
       inline: "start",
     });
   };
+
+  useEffect(() => {
+    return () => {
+      dispatch(setSearchValue(""));
+    };
+  }, []);
 
   const clearInputValue = () => {
     setInputValue("");

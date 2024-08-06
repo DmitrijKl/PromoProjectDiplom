@@ -1,28 +1,41 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import styles from "./Products.module.scss";
 import type React from "react";
 import Product from "./Product";
 import { fetchProducts } from "../../Redux/productsSlice/productSlice";
-import { useAppDispatch } from "../../Redux/store";
-import type { IRootState } from "../../Redux/store";
-import { useSelector } from "react-redux";
+import { useAppDispatch, useAppSelector } from "../../Redux/store";
 import Categories from "../categories/Categories";
 import SceletonProduct from "../sceletonProduct/SceletonProduct";
 import PaginationProducts from "../Pagination/Pagination";
+import { filterSliceState } from "../../Redux/filterSlice/filterSelectors";
+import { productSliceState } from "../../Redux/productsSlice/productsSelectors";
+import { useNavigate } from "react-router-dom";
+import qs from "qs";
 
 const Products: React.FC = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const isMounted = useRef(false);
 
-  const { items: products, status } = useSelector(
-    (state: IRootState) => state.productSlice,
-  );
+  const { items: products, status } = useAppSelector(productSliceState);
 
-  const { currentPage, categoryName, searchValue } = useSelector(
-    (state: IRootState) => state.filterSlice,
-  );
+  const { currentPage, categoryName, searchValue } =
+    useAppSelector(filterSliceState);
+
   useEffect(() => {
     dispatch(fetchProducts({ currentPage, categoryName, searchValue }));
   }, [currentPage, categoryName, searchValue]);
+
+  useEffect(() => {
+    if (isMounted.current) {
+      const queryString = qs.stringify({
+        categoryName,
+        currentPage,
+      });
+      navigate(`?${queryString}`);
+    }
+    isMounted.current = true;
+  }, [categoryName, searchValue, currentPage]);
 
   return (
     <section id="products">
