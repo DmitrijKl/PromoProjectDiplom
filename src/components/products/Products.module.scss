@@ -15,4 +15,10 @@
   grid-column-gap: 11px;
   grid-row-gap: 11px;
   justify-items: center;
+  .pageEmpty {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    justify-self: flex-start;
+    margin: 10px 0;
+  }
 }

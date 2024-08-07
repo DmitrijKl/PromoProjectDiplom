@@ -15,7 +15,7 @@ import qs from "qs";
 const Products: React.FC = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const isMounted = useRef(false);
+  const isMounted = useRef<boolean>(false);
 
   const { items: products, status } = useAppSelector(productSliceState);
 
@@ -27,14 +27,16 @@ const Products: React.FC = () => {
   }, [currentPage, categoryName, searchValue]);
 
   useEffect(() => {
-    if (isMounted.current) {
-      const queryString = qs.stringify({
-        categoryName,
-        currentPage,
-      });
-      navigate(`?${queryString}`);
+    if (!isMounted.current) {
+      navigate("/");
+      isMounted.current = true;
+      return;
     }
-    isMounted.current = true;
+    const queryString = qs.stringify({
+      categoryName,
+      currentPage,
+    });
+    navigate(`?${queryString}`);
   }, [categoryName, searchValue, currentPage]);
 
   return (
@@ -45,11 +47,11 @@ const Products: React.FC = () => {
         <h1>Ошибка при получении данных...</h1>
       ) : (
         <ul className={styles.items}>
-          {status === "loading"
-            ? [...new Array(4)].map((_, index) => (
-                <SceletonProduct key={index} />
-              ))
-            : products.map((element) => (
+          {status === "loading" ? (
+            [...new Array(4)].map((_, index) => <SceletonProduct key={index} />)
+          ) : products.length > 0 ? (
+            products.map((element) => {
+              return (
                 <Product
                   key={element.id}
                   description={element.description}
@@ -60,7 +62,13 @@ const Products: React.FC = () => {
                   category={element.category}
                   id={element.id}
                 />
-              ))}
+              );
+            })
+          ) : (
+            <h2 className={styles.pageEmpty}>
+              Продуктов на выбранной странице не найдено.
+            </h2>
+          )}
         </ul>
       )}
       <PaginationProducts currentPage={currentPage} />
