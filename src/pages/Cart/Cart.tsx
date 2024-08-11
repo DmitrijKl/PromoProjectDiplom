@@ -1,5 +1,4 @@
 import type React from "react";
-import { useSelector } from "react-redux";
 import { cartSelector } from "../../Redux/cartSlice/cartSelectors";
 import CartItem from "../../components/cartItem/CartItem";
 import CartEmpty from "../../components/cartEmpty/CartEmpty";
@@ -7,16 +6,54 @@ import styles from "./Cart.module.scss";
 import { MdOutlineDeleteForever } from "react-icons/md";
 import { useAppDispatch, useAppSelector } from "../../Redux/store";
 import { clearItems } from "../../Redux/cartSlice/cartSlice";
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { IoBackspaceSharp } from "react-icons/io5";
+import axios from "axios";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Cart: React.FC = () => {
   const { items, totalPrice } = useAppSelector(cartSelector);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const [errorAuth, setErrorAuth] = useState<boolean>(false);
+  const { isAuthenticated, user } = useAuth0();
   const totalCount = items.reduce((sum: number, item) => {
     return sum + item.count;
   }, 0);
+
+  const submitOrderHandler = () => {
+    const fetchPostOrder = async () => {
+      try {
+        const responce = await axios.post(
+          `https://promodelivery-b94a3-default-rtdb.firebaseio.com/orders.json`,
+          {
+            Products: items,
+            TotalPriceOrder: +totalPrice.toFixed(2),
+            userName: user?.name,
+            date: new Date().toLocaleString(),
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          },
+        );
+        if (responce.statusText === "OK") {
+          navigate("/");
+          dispatch(clearItems());
+        }
+      } catch (error) {
+        alert("Ошибка при отправке заказа");
+      }
+    };
+
+    if (isAuthenticated) {
+      fetchPostOrder();
+    } else {
+      setErrorAuth(true);
+    }
+  };
 
   const clearAllProductsCart = () => {
     if (
@@ -62,8 +99,15 @@ const Cart: React.FC = () => {
             Вернуться назад
           </button>
         </Link>
-        <button className={styles.btnOrder}>Оформить заказ</button>
+        <button onClick={submitOrderHandler} className={styles.btnOrder}>
+          Оформить заказ
+        </button>
       </div>
+      {errorAuth && (
+        <p className={styles.notAuth}>
+          Авторизуйтесь для того чтобы сделать заказ.
+        </p>
+      )}
     </div>
   );
 };

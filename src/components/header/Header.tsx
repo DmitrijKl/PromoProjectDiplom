@@ -2,18 +2,17 @@ import type React from "react";
 import styles from "./header.module.scss";
 import PromoLogo from "../../assets/PromoLogo.svg?react";
 import { Link, useLocation } from "react-router-dom";
-import { useAppDispatch, type IRootState } from "../../Redux/store";
-import { useSelector } from "react-redux";
+import { useAppDispatch, useAppSelector } from "../../Redux/store";
 import { useEffect } from "react";
 import { addItemsFromLocalStorage } from "../../Redux/cartSlice/cartSlice";
 import SearchInput from "../searchInput/SearchInput";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Avatar, CircularProgress } from "@mui/material";
+import { cartSelector } from "../../Redux/cartSlice/cartSelectors";
 
 const Header: React.FC = () => {
-  const { items } = useSelector((state: IRootState) => state.cartSlice);
+  const { items } = useAppSelector(cartSelector);
   const { logout, loginWithRedirect, isLoading, user } = useAuth0();
-
   const dispatch = useAppDispatch();
   const location = useLocation();
   const totalCount = items.reduce((sum: number, item) => {

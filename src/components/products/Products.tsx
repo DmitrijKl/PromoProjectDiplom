@@ -11,11 +11,12 @@ import { filterSliceState } from "../../Redux/filterSlice/filterSelectors";
 import { productSliceState } from "../../Redux/productsSlice/productsSelectors";
 import { useNavigate } from "react-router-dom";
 import qs from "qs";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Products: React.FC = () => {
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
-  const isMounted = useRef<boolean>(false);
+  // const navigate = useNavigate();
+  // const isMounted = useRef<boolean>(false);
 
   const { items: products, status } = useAppSelector(productSliceState);
 
@@ -27,17 +28,17 @@ const Products: React.FC = () => {
   }, [currentPage, categoryName, searchValue]);
 
   useEffect(() => {
-    if (!isMounted.current) {
-      navigate("/");
-      isMounted.current = true;
-      return;
-    }
+    // if (!isMounted.current) {
+    //   navigate("/");
+    //   isMounted.current = true;
+    //   return;
+    // }
     const queryString = qs.stringify({
       categoryName,
       currentPage,
     });
-    navigate(`?${queryString}`);
-  }, [categoryName, searchValue, currentPage]);
+    // navigate(`?${queryString}`);
+  }, [categoryName, currentPage]);
 
   return (
     <section id="products">
