@@ -12,6 +12,7 @@ import { useAppDispatch, useAppSelector } from "../../Redux/store";
 import type { IRootState } from "../../Redux/store";
 import { CircularProgress } from "@mui/material";
 import { cartItemSelector } from "../../Redux/cartSlice/cartSelectors";
+import { setError } from "../../Redux/errorSlice/errorSlice";
 
 const ProductFull: React.FC = () => {
   const { id } = useParams();
@@ -31,7 +32,9 @@ const ProductFull: React.FC = () => {
         );
         setProduct(data);
       } catch (error) {
-        alert("Ошибка при получении продукта");
+        if (error instanceof Error) {
+          dispatch(setError(error.message));
+        }
         navigate("/");
       }
     };

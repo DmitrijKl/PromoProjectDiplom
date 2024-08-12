@@ -19,6 +19,7 @@ import {
   DialogContentText,
   DialogTitle,
 } from "@mui/material";
+import { setError } from "../../Redux/errorSlice/errorSlice";
 
 const Cart: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -61,7 +62,9 @@ const Cart: React.FC = () => {
         handleClickOpenDialog();
       }
     } catch (error) {
-      alert("Ошибка при отправке заказа");
+      if (error instanceof Error) {
+        dispatch(setError(error.message));
+      }
     }
   };
 

@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import styles from "./Products.module.scss";
 import type React from "react";
 import Product from "./Product";
@@ -9,7 +9,7 @@ import SceletonProduct from "../sceletonProduct/SceletonProduct";
 import PaginationProducts from "../Pagination/Pagination";
 import { filterSliceState } from "../../Redux/filterSlice/filterSelectors";
 import { productSliceState } from "../../Redux/productsSlice/productsSelectors";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import qs from "qs";
 import { useAuth0 } from "@auth0/auth0-react";
 

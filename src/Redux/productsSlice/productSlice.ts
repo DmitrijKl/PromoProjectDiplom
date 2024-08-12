@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
+import { setError } from "../errorSlice/errorSlice";
 
 export type ProductItem = {
   amount: number;
@@ -35,12 +36,22 @@ type FetchProducts = {
 
 export const fetchProducts = createAsyncThunk(
   "products/fetchProductsStatus",
-  async ({ currentPage, categoryName, searchValue }: FetchProducts) => {
+  async (
+    { currentPage, categoryName, searchValue }: FetchProducts,
+    thunkAPI,
+  ) => {
     const category = categoryName === "Все" ? "" : categoryName;
-    const { data } = await axios.get<ProductItem[]>(
-      `https://663df0f4e1913c476795f5cc.mockapi.io/products?page=${currentPage}&limit=4&category=${category}&description=${searchValue}`,
-    );
-    return data as ProductItem[];
+    try {
+      const { data } = await axios.get<ProductItem[]>(
+        `https://663df0f4e1913c476795f5cc.mockapi.io/products?page=${currentPage}&limit=4&category=${category}&description=${searchValue}`,
+      );
+      return data as ProductItem[];
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        thunkAPI.dispatch(setError(error.message));
+      }
+      return thunkAPI.rejectWithValue(error);
+    }
   },
 );
 

@@ -3,6 +3,7 @@ import type React from "react";
 import styles from "./MainLayouts.module.scss";
 import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
+import Error from "../components/Error/Error";
 
 const Mainlayot: React.FC = () => {
   return (
@@ -16,6 +17,7 @@ const Mainlayot: React.FC = () => {
         </div>
       </main>
       <Footer />
+      <Error />
     </div>
   );
 };

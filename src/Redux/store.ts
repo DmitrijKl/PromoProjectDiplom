@@ -3,9 +3,10 @@ import productSlice from "./productsSlice/productSlice";
 import cartSlice from "./cartSlice/cartSlice";
 import filterSlice from "./filterSlice/filterSlice";
 import { useDispatch, useSelector } from "react-redux";
+import errorSlice from "./errorSlice/errorSlice";
 
 export const store = configureStore({
-  reducer: { productSlice, cartSlice, filterSlice },
+  reducer: { productSlice, cartSlice, filterSlice, errorSlice },
 });
 
 export type IRootState = ReturnType<typeof store.getState>;
