@@ -10,6 +10,18 @@
     font-weight: 500;
     color: red;
     margin-top: 10px;
+    .btnAuth {
+      border: none;
+      background-color: white;
+      font-size: 18px;
+      text-decoration: underline dashed;
+      cursor: pointer;
+      color: red;
+      transition: all 0.2s;
+      &:hover {
+        opacity: 0.6;
+      }
+    }
   }
   .cartOrder {
     margin-top: 20px;

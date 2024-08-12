@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import styles from "./Products.module.scss";
 import type React from "react";
 import Product from "./Product";
@@ -9,14 +9,15 @@ import SceletonProduct from "../sceletonProduct/SceletonProduct";
 import PaginationProducts from "../Pagination/Pagination";
 import { filterSliceState } from "../../Redux/filterSlice/filterSelectors";
 import { productSliceState } from "../../Redux/productsSlice/productsSelectors";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import qs from "qs";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const Products: React.FC = () => {
   const dispatch = useAppDispatch();
-  // const navigate = useNavigate();
-  // const isMounted = useRef<boolean>(false);
+  const { isLoading } = useAuth0();
+  const navigate = useNavigate();
+  const isMounted = useRef<boolean>(false);
 
   const { items: products, status } = useAppSelector(productSliceState);
 
@@ -28,17 +29,19 @@ const Products: React.FC = () => {
   }, [currentPage, categoryName, searchValue]);
 
   useEffect(() => {
-    // if (!isMounted.current) {
-    //   navigate("/");
-    //   isMounted.current = true;
-    //   return;
-    // }
-    const queryString = qs.stringify({
-      categoryName,
-      currentPage,
-    });
-    // navigate(`?${queryString}`);
-  }, [categoryName, currentPage]);
+    if (!isLoading) {
+      navigate("/");
+      if (!isMounted.current) {
+        isMounted.current = true;
+        return;
+      }
+      const queryString = qs.stringify({
+        categoryName,
+        currentPage,
+      });
+      navigate(`?${queryString}`);
+    }
+  }, [categoryName, currentPage, isLoading]);
 
   return (
     <section id="products">

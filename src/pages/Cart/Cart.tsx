@@ -1,4 +1,4 @@
-import type React from "react";
+import React from "react";
 import { cartSelector } from "../../Redux/cartSlice/cartSelectors";
 import CartItem from "../../components/cartItem/CartItem";
 import CartEmpty from "../../components/cartEmpty/CartEmpty";
@@ -11,43 +11,61 @@ import { Link, useNavigate } from "react-router-dom";
 import { IoBackspaceSharp } from "react-icons/io5";
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+} from "@mui/material";
 
 const Cart: React.FC = () => {
-  const { items, totalPrice } = useAppSelector(cartSelector);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const { items, totalPrice } = useAppSelector(cartSelector);
   const [errorAuth, setErrorAuth] = useState<boolean>(false);
-  const { isAuthenticated, user } = useAuth0();
+  const [open, setOpen] = React.useState(false);
+  const { isAuthenticated, user, loginWithRedirect } = useAuth0();
   const totalCount = items.reduce((sum: number, item) => {
     return sum + item.count;
   }, 0);
 
-  const submitOrderHandler = () => {
-    const fetchPostOrder = async () => {
-      try {
-        const responce = await axios.post(
-          `https://promodelivery-b94a3-default-rtdb.firebaseio.com/orders.json`,
-          {
-            Products: items,
-            TotalPriceOrder: +totalPrice.toFixed(2),
-            userName: user?.name,
-            date: new Date().toLocaleString(),
-          },
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          },
-        );
-        if (responce.statusText === "OK") {
-          navigate("/");
-          dispatch(clearItems());
-        }
-      } catch (error) {
-        alert("Ошибка при отправке заказа");
-      }
-    };
+  const handleClickOpenDialog = () => {
+    setOpen(true);
+  };
 
+  const handleCloseDialog = () => {
+    setOpen(false);
+    // navigate("/");
+    dispatch(clearItems());
+  };
+
+  const fetchPostOrder = async () => {
+    try {
+      const responce = await axios.post(
+        `https://promodelivery-b94a3-default-rtdb.firebaseio.com/orders.json`,
+        {
+          Products: items,
+          TotalPriceOrder: +totalPrice.toFixed(2),
+          userName: user?.name,
+          date: new Date().toLocaleString(),
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        },
+      );
+      if (responce.statusText === "OK") {
+        handleClickOpenDialog();
+      }
+    } catch (error) {
+      alert("Ошибка при отправке заказа");
+    }
+  };
+
+  const submitOrderHandler = () => {
     if (isAuthenticated) {
       fetchPostOrder();
     } else {
@@ -105,9 +123,37 @@ const Cart: React.FC = () => {
       </div>
       {errorAuth && (
         <p className={styles.notAuth}>
-          Авторизуйтесь для того чтобы сделать заказ.
+          <span
+            className={styles.btnAuth}
+            onClick={() => {
+              loginWithRedirect();
+            }}
+          >
+            Авторизуйтесь
+          </span>{" "}
+          для того чтобы сделать заказ.
         </p>
       )}
+      <Dialog
+        open={open}
+        onClose={handleCloseDialog}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          {`Уважаемый ${user?.nickname}!`}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Спасибо за ваш заказ. Мы надеемся вскоре увидеть вас снова!
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseDialog} autoFocus>
+            Закрыть окно
+          </Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 };
