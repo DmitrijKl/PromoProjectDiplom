@@ -24,7 +24,7 @@ const Header: React.FC = () => {
     if (products) {
       dispatch(addItemsFromLocalStorage(JSON.parse(products)));
     }
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     const json = JSON.stringify(items);

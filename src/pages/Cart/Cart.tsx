@@ -7,7 +7,7 @@ import { MdOutlineDeleteForever } from "react-icons/md";
 import { useAppDispatch, useAppSelector } from "../../Redux/store";
 import { clearItems } from "../../Redux/cartSlice/cartSlice";
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { IoBackspaceSharp } from "react-icons/io5";
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -23,7 +23,6 @@ import { setError } from "../../Redux/errorSlice/errorSlice";
 
 const Cart: React.FC = () => {
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
   const { items, totalPrice } = useAppSelector(cartSelector);
   const [errorAuth, setErrorAuth] = useState<boolean>(false);
   const [open, setOpen] = React.useState(false);
@@ -38,7 +37,6 @@ const Cart: React.FC = () => {
 
   const handleCloseDialog = () => {
     setOpen(false);
-    // navigate("/");
     dispatch(clearItems());
   };
 

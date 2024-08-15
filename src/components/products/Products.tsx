@@ -12,10 +12,11 @@ import { productSliceState } from "../../Redux/productsSlice/productsSelectors";
 import { useNavigate } from "react-router-dom";
 import qs from "qs";
 import { useAuth0 } from "@auth0/auth0-react";
+import { setInitialFilter } from "../../Redux/filterSlice/filterSlice";
 
 const Products: React.FC = () => {
   const dispatch = useAppDispatch();
-  const { isLoading } = useAuth0();
+  const { getAccessTokenSilently } = useAuth0();
   const navigate = useNavigate();
   const isMounted = useRef<boolean>(false);
 
@@ -25,23 +26,29 @@ const Products: React.FC = () => {
     useAppSelector(filterSliceState);
 
   useEffect(() => {
-    dispatch(fetchProducts({ currentPage, categoryName, searchValue }));
-  }, [currentPage, categoryName, searchValue]);
-
-  useEffect(() => {
-    if (!isLoading) {
-      navigate("/");
-      if (!isMounted.current) {
-        isMounted.current = true;
-        return;
-      }
+    navigate("/");
+    getAccessTokenSilently();
+    if (!isMounted.current) {
+      isMounted.current = true;
+      return;
+    } else {
       const queryString = qs.stringify({
         categoryName,
         currentPage,
       });
       navigate(`?${queryString}`);
     }
-  }, [categoryName, currentPage, isLoading]);
+  }, [categoryName, currentPage, navigate, getAccessTokenSilently]);
+
+  useEffect(() => {
+    dispatch(fetchProducts({ currentPage, categoryName, searchValue }));
+  }, [currentPage, categoryName, searchValue, dispatch]);
+
+  useEffect(() => {
+    return () => {
+      dispatch(setInitialFilter());
+    };
+  }, [dispatch]);
 
   return (
     <section id="products">

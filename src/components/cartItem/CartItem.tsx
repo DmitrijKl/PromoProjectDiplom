@@ -33,7 +33,6 @@ const CartItem: React.FC<CartItemProps> = ({
   count,
 }) => {
   const dispatch = useAppDispatch();
-
   const priceProduct = (price * count).toFixed(2);
 
   const onClickMinus = () => {

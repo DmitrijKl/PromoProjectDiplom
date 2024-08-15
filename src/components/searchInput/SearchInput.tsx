@@ -23,7 +23,7 @@ const SearchInput: React.FC = () => {
     return () => {
       dispatch(setSearchValue(""));
     };
-  }, []);
+  }, [dispatch]);
 
   const clearInputValue = () => {
     setInputValue("");

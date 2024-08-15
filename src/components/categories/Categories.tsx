@@ -10,6 +10,7 @@ interface CategoriesProps {
 const Categories: React.FC<CategoriesProps> = ({ categoryName }) => {
   const categories = ["Все", "Хлеб", "Вода", "Молоко"];
   const dispatch = useAppDispatch();
+
   return (
     <ul className={styles.categories}>
       {categories.map((category, id) => (
