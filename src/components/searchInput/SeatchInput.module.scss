@@ -47,3 +47,11 @@
     width: 400px;
   }
 }
+
+@media (max-width: 1269px) {
+  .root {
+    input {
+      width: 250px;
+    }
+  }
+}

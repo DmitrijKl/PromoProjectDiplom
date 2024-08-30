@@ -14,6 +14,7 @@ header {
   border-bottom: 1px solid #f3f2f2;
   background-color: #fff;
   height: 89px;
+  flex-wrap: wrap;
   .cartAuthContainer {
     display: flex;
     align-items: center;
@@ -91,5 +92,18 @@ header {
     border-left: 3px solid black;
     padding-left: 3px;
     font-weight: bold;
+  }
+}
+
+@media (max-width: 1396px) {
+  .header {
+    padding: 22px 50px;
+  }
+}
+@media (max-width: 1112px) {
+  .logo {
+    h2 {
+      display: none;
+    }
   }
 }

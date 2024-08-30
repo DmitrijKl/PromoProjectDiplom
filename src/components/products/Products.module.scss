@@ -12,8 +12,8 @@
 .items {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  grid-column-gap: 11px;
-  grid-row-gap: 11px;
+  grid-column-gap: 25px;
+  grid-row-gap: 20px;
   justify-items: center;
   .pageEmpty {
     grid-column-start: 1;

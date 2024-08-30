@@ -25,6 +25,8 @@
   .footerSectionOne {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
     justify-content: space-between;
     padding-bottom: 10px;
     border-bottom: 2px solid #f6f6f6;
@@ -66,5 +68,21 @@
         }
       }
     }
+  }
+}
+
+@media (max-width: 1396px) {
+  .footer {
+    padding: 22px 50px;
+  }
+}
+@media (max-width: 923px) {
+  .footerContacts {
+    width: 100%;
+  }
+}
+@media (max-width: 597px) {
+  .footerSectionOne {
+    justify-content: center !important;
   }
 }

@@ -19,7 +19,7 @@ const SwiperSlider: React.FC = () => {
     <Swiper
       modules={[Navigation, Pagination, Scrollbar, A11y]}
       spaceBetween={10}
-      slidesPerView={3}
+      slidesPerView={"auto"}
       navigation={{
         prevEl: `.prevSlide`,
         nextEl: ".nextSlide",
