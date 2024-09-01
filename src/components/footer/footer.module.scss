@@ -11,6 +11,9 @@
     align-items: center;
     margin-top: 10px;
     font-weight: 500;
+    @media (max-width: 597px) {
+      font-size: 12px;
+    }
     p {
       opacity: 0.6;
     }
@@ -30,6 +33,10 @@
     justify-content: space-between;
     padding-bottom: 10px;
     border-bottom: 2px solid #f6f6f6;
+    @media (max-width: 469px) {
+      justify-content: center;
+    }
+
     .IconsSC {
       display: flex;
       align-items: center;
@@ -53,6 +60,9 @@
           opacity: 0.6;
         }
       }
+      @media (max-width: 597px) {
+        font-size: 16px;
+      }
     }
     .listLinks {
       display: flex;
@@ -66,6 +76,9 @@
         &:hover {
           opacity: 0.6;
         }
+      }
+      @media (max-width: 597px) {
+        font-size: 16px;
       }
     }
   }
@@ -81,8 +94,8 @@
     width: 100%;
   }
 }
-@media (max-width: 597px) {
-  .footerSectionOne {
-    justify-content: center !important;
+@media (max-width: 886px) {
+  .footer {
+    padding: 22px 10px;
   }
 }

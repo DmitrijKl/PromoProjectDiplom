@@ -5,6 +5,7 @@
   background-color: white;
   border-radius: 8px;
   overflow: hidden;
+
   .clearInput {
     font-size: 30px;
     margin-right: 5px;
@@ -12,6 +13,9 @@
     transition: all 0.2s;
     &:hover {
       transform: scale(1.1);
+    }
+    @media (max-width: 500px) {
+      font-size: 25px;
     }
   }
   .inputIcon {
@@ -52,6 +56,28 @@
   .root {
     input {
       width: 250px;
+    }
+  }
+}
+@media (max-width: 805px) {
+  .root {
+    order: 3;
+    width: 100%;
+    input {
+      width: 80%;
+    }
+  }
+}
+@media (max-width: 500px) {
+  .root {
+    .inputIcon {
+      padding: 0 10px;
+      h3 {
+        font-size: 16px;
+      }
+    }
+    input {
+      font-size: 16px;
     }
   }
 }

@@ -13,8 +13,8 @@ header {
   justify-content: space-between;
   border-bottom: 1px solid #f3f2f2;
   background-color: #fff;
-  height: 89px;
   flex-wrap: wrap;
+  gap: 5px;
   .cartAuthContainer {
     display: flex;
     align-items: center;
@@ -28,6 +28,11 @@ header {
       border-radius: 20px;
       padding: 4px 9px;
       margin-right: 20px;
+      @media (max-width: 500px) {
+        button {
+          font-size: 16px;
+        }
+      }
       button {
         margin-right: 0;
       }
@@ -48,6 +53,9 @@ header {
       &:hover {
         opacity: 0.7;
       }
+      @media (max-width: 500px) {
+        font-size: 16px;
+      }
     }
   }
   .cartBtn {
@@ -60,6 +68,9 @@ header {
     font-weight: 500;
     transition: all 0.2s;
     font-size: 18px;
+    @media (max-width: 500px) {
+      font-size: 16px;
+    }
     &:active {
       transform: translateY(2px);
     }
@@ -87,11 +98,16 @@ header {
   }
   .logoSvg {
     padding-right: 3px;
+    height: 48px;
   }
   h2 {
     border-left: 3px solid black;
     padding-left: 3px;
     font-weight: bold;
+    display: flex;
+    height: 36px;
+    align-items: center;
+    align-self: center;
   }
 }
 
@@ -105,5 +121,24 @@ header {
     h2 {
       display: none;
     }
+  }
+}
+@media (max-width: 877px) {
+  .logo {
+    h2 {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 886px) {
+  .header {
+    padding: 22px 10px;
+  }
+}
+@media (max-width: 795px) {
+  .header {
+    padding: 10px 10px;
+    row-gap: 10px;
   }
 }
