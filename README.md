@@ -1,12 +1,54 @@
-## Scripts
+# Название проекта
 
-- `dev`/`start` - start dev server and open browser
-- `build` - build for production
-- `preview` - locally preview production build
-- `test` - launch test runner
+Данный проект под названием PromoDelivery является сайтом доставки продуктов из магазина. Данный проект делался в рамках курса по frontend разработке от компании Promo-IT.
+Реализована подгрузка продуктов с базы данных, разработана логика корзины с возможностью отправки заказа в базу данных.
 
-## Inspiration
+## Содержание
 
-- [Create React App](https://github.com/facebook/create-react-app/tree/main/packages/cra-template)
-- [Vite](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react)
-- [Vitest](https://github.com/vitest-dev/vitest/tree/main/examples/react-testing-lib)
+- [Технологии](#технологии)
+- [Начало работы](#начало-работы)
+- [Тестирование](#тестирование)
+- [Команда проекта](#команда-проекта)
+
+## Технологии
+
+- [React]
+- [TypeScript]
+- [ReduxTK]
+- [ReactRouter]
+- [MUI]
+- [Axios]
+
+## Начало работы
+
+Для установки и запуска проекта, необходим [NodeJS](https://nodejs.org/) v8+.
+
+Установите npm-пакет с помощью команды:
+
+```sh
+$ npm install
+```
+
+### Запуск Development сервера
+
+Чтобы запустить сервер для разработки, выполните команду:
+
+```sh
+$ npm run dev
+```
+
+### Создание билда
+
+```sh
+$ npm run build
+```
+
+## Тестирование
+
+```sh
+npm run test
+```
+
+## Команда проекта
+
+[Клянченков Дмитрий](https://t.me/DmitriyKlyanchenkov) — Front-End Engineer
