@@ -3,6 +3,7 @@ import styles from "./Pagination.module.scss";
 import ReactPaginate from "react-paginate";
 import { useAppDispatch } from "../../Redux/store";
 import { setCurrentPage } from "../../Redux/filterSlice/filterSlice";
+import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 
 type PaginationProps = {
   currentPage: number;
@@ -19,8 +20,8 @@ const PaginationProducts: React.FC<PaginationProps> = ({ currentPage }) => {
     <ReactPaginate
       className={styles.root}
       breakLabel="..."
-      nextLabel=" >"
-      previousLabel="< "
+      nextLabel={<MdKeyboardArrowRight className={styles.nextArrow} />}
+      previousLabel={<MdKeyboardArrowLeft className={styles.prevArrow} />}
       onPageChange={(event) => onChangePage(event.selected + 1)}
       pageRangeDisplayed={4}
       pageCount={3}

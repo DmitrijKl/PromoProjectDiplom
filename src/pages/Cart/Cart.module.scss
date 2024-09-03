@@ -4,6 +4,9 @@
   padding: 20px 50px;
   background-color: white;
   border-radius: 20px;
+  @media (max-width: 752px) {
+    padding: 10px;
+  }
   .notAuth {
     text-align: center;
     font-size: 18px;
@@ -44,6 +47,10 @@
       align-items: center;
       gap: 5px;
       line-height: 16px;
+      @media (max-width: 752px) {
+        font-size: 14px;
+        padding: 12px 18px;
+      }
       &:hover {
         color: rgb(65, 64, 64);
         border: 1px solid rgb(65, 64, 64);
@@ -64,6 +71,10 @@
       border-radius: 30px;
       transition: all 0.3s;
       max-width: 260px;
+      @media (max-width: 752px) {
+        font-size: 14px;
+        padding: 12px 18px;
+      }
       &:active {
         transform: translateY(2px);
       }
@@ -78,6 +89,9 @@
     justify-content: space-between;
     font-size: 24px;
     margin-top: 40px;
+    @media (max-width: 752px) {
+      flex-direction: column;
+    }
     .cartProductsSum {
       color: green;
     }

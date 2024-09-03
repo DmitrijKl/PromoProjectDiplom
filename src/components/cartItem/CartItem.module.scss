@@ -6,6 +6,10 @@
   margin-bottom: 24px;
   border-top: 2px solid #f6f6f6;
   padding-top: 30px;
+  @media (max-width: 752px) {
+    margin-bottom: 10px;
+    padding-top: 10px;
+  }
   .img {
     width: 120px;
     height: 120px;
@@ -20,12 +24,18 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    @media (max-width: 752px) {
+      flex-direction: column;
+    }
     gap: 10px;
     .cartItemPrice {
       font-size: 20px;
       font-weight: bold;
       text-align: center;
       width: 22%;
+      @media (max-width: 752px) {
+        width: 100%;
+      }
     }
     .productClear {
       font-size: 36px;
@@ -43,6 +53,10 @@
       text-overflow: ellipsis;
       font-size: 16px;
       font-weight: 500;
+      @media (max-width: 752px) {
+        text-align: center;
+        width: 100%;
+      }
     }
     .cartCounter {
       min-width: 130px;
