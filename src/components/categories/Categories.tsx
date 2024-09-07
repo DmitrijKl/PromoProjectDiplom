@@ -6,9 +6,9 @@ import { setCategoryName } from "../../Redux/filterSlice/filterSlice";
 interface CategoriesProps {
   categoryName: string;
 }
+const categories = ["Все", "Хлеб", "Вода", "Молоко"];
 
 const Categories: React.FC<CategoriesProps> = ({ categoryName }) => {
-  const categories = ["Все", "Хлеб", "Вода", "Молоко"];
   const dispatch = useAppDispatch();
 
   return (

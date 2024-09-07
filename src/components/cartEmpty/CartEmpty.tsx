@@ -1,7 +1,7 @@
 import type React from "react";
 import styles from "./CartEmpty.module.scss";
 import { Link } from "react-router-dom";
-import Brokoly from "../../assets/Корзина_броколи.svg";
+import Brokoly from "../../assets/cartEmpty.svg";
 
 const CartEmpty: React.FC = () => {
   return (

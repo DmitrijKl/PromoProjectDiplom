@@ -5,7 +5,7 @@ const SceletonProduct: React.FC = () => (
   <ContentLoader
     speed={2}
     width={300}
-    height={433}
+    height={434}
     viewBox="0 0 300 434"
     backgroundColor="#dad7d7"
     foregroundColor="#ecebeb"

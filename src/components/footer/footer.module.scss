@@ -1,14 +1,11 @@
 .footerLinks {
-  display: flex;
-  align-items: center;
+  @include flex-align-center;
   gap: 10px;
 }
 .footer {
   padding: 22px 100px;
   .footerSectionTwo {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include flex-center-space-between;
     margin-top: 10px;
     font-weight: 500;
     @media (max-width: 597px) {
@@ -26,11 +23,9 @@
     }
   }
   .footerSectionOne {
-    display: flex;
-    align-items: center;
+    @include flex-center-space-between;
     flex-wrap: wrap;
     gap: 10px;
-    justify-content: space-between;
     padding-bottom: 10px;
     border-bottom: 2px solid #f6f6f6;
     @media (max-width: 469px) {
@@ -38,8 +33,7 @@
     }
 
     .IconsSC {
-      display: flex;
-      align-items: center;
+      @include flex-align-center;
       gap: 20px;
       cursor: pointer;
       a {
@@ -65,9 +59,7 @@
       }
     }
     .listLinks {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      @include flex-center-space-between;
       gap: 15px;
       font-size: 20px;
       font-weight: bold;

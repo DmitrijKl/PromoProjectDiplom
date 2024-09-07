@@ -1,6 +1,5 @@
 .jobBanner {
-  display: flex;
-  align-items: center;
+  @include flex-align-center;
   flex-wrap: wrap;
   gap: 20px;
   justify-content: space-around;

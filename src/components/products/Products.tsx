@@ -16,8 +16,11 @@ import { setInitialFilter } from "../../Redux/filterSlice/filterSlice";
 
 const Products: React.FC = () => {
   const dispatch = useAppDispatch();
-  const { getAccessTokenSilently, isLoading } = useAuth0();
+
+  const { getAccessTokenSilently } = useAuth0();
+
   const navigate = useNavigate();
+
   const isMounted = useRef<boolean>(false);
 
   const { items: products, status } = useAppSelector(productSliceState);

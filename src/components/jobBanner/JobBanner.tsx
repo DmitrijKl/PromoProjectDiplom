@@ -1,5 +1,5 @@
 import type React from "react";
-import img from "../../assets/КомандаPromo.png";
+import img from "../../assets/teamPromo.png";
 import styles from "./JobBanner.module.scss";
 
 const JobBanner: React.FC = () => {

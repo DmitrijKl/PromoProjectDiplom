@@ -1,14 +1,10 @@
 .loading {
+  @include flex-center;
   height: 40vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   gap: 20px;
 }
 .root {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flex-center;
   background-color: white;
   border-radius: 10px;
   padding: 50px 0;
@@ -33,8 +29,7 @@
     align-self: center;
     @media (max-width: 1021px) {
       max-width: 100%;
-      display: flex;
-      flex-direction: column;
+      @include flex-column;
     }
     h2 {
       line-height: 40px;
@@ -45,8 +40,7 @@
     }
     .rating {
       margin: 15px 0 40px 0;
-      display: flex;
-      align-items: center;
+      @include flex-align-center;
       .starsRating {
         span {
           color: #faaf00;
@@ -59,8 +53,7 @@
       }
     }
     .cart {
-      display: flex;
-      align-items: center;
+      @include flex-align-center;
       @media (max-width: 1021px) {
         align-self: center;
       }
@@ -71,8 +64,7 @@
         }
       }
       .addCart {
-        display: flex;
-        align-items: center;
+        @include flex-align-center;
         background: rgb(80, 185, 70);
         gap: 10px;
         color: white;

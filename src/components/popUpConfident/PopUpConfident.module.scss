@@ -19,6 +19,7 @@
     margin: 0 auto;
     border-radius: 10px;
     .popupHeader {
+      @include flex-center-space-between;
       border-radius: 8px;
       border-bottom: 1px solid #eeeded;
       background-color: white;
@@ -28,9 +29,6 @@
       overflow: hidden;
       padding: 14px 30px 14px 30px;
       margin-bottom: 28px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
       @media (max-width: 1390px) {
         top: -40px;
       }

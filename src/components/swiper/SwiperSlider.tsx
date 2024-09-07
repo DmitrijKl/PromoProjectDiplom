@@ -5,12 +5,12 @@ import type React from "react";
 import { GoChevronLeft } from "react-icons/go";
 import { GoChevronRight } from "react-icons/go";
 import SwiperCard from "./SwiperCard";
-import Xleb from "../../assets/SwiperImg/Хлеб.webp";
-import Arbuz from "../../assets/SwiperImg/Арбуз с дыней.webp";
-import Dzin from "../../assets/SwiperImg/ДжинТоник.webp";
-import Vipusk from "../../assets/SwiperImg/Выпускной.webp";
-import Super from "../../assets/SwiperImg/СуперЦена.webp";
-import Malina from "../../assets/SwiperImg/Малина.webp";
+import Xleb from "../../assets/SwiperImg/bread.webp";
+import Arbuz from "../../assets/SwiperImg/watermelonWithMelon.webp";
+import Dzin from "../../assets/SwiperImg/ginTonic.webp";
+import Vipusk from "../../assets/SwiperImg/graduation.webp";
+import Super from "../../assets/SwiperImg/superPrice.webp";
+import Malina from "../../assets/SwiperImg/raspberry.webp";
 import styles from "./SwiperSlider.module.scss";
 import "swiper/css";
 
@@ -25,10 +25,10 @@ const SwiperSlider: React.FC = () => {
         nextEl: ".nextSlide",
       }}
     >
-      <button className={`${styles.prevSlide} prevSlide`}>
+      <button className={`${styles.slide} ${styles.prevSlide} prevSlide`}>
         <GoChevronLeft className={styles.prevArrow} />
       </button>
-      <button className={`${styles.nextSlide} nextSlide`}>
+      <button className={`${styles.slide} ${styles.nextSlide} nextSlide`}>
         <GoChevronRight className={styles.nextArrow} />
       </button>
       <SwiperSlide className={styles.swiperSlide}>

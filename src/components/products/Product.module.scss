@@ -1,13 +1,12 @@
 .cardProduct {
+  @include flex-column;
+  justify-content: space-between;
   max-width: 370px;
   min-height: 371px;
   padding: 16px;
   background-color: #fff;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 4px 18px;
   border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   @media (max-width: 604px) {
     min-height: 250px;
   }
@@ -38,15 +37,12 @@
     object-fit: contain;
   }
   .ratingProduct {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    @include flex-center-space-between;
     margin-bottom: 8px;
     color: #b6bac2;
     font-size: 15px;
     &__container {
-      display: flex;
-      align-items: center;
+      @include flex-align-center;
       .rating {
         color: rgb(255, 201, 0);
         margin-right: 5px;
@@ -54,9 +50,7 @@
     }
   }
   .cardAddContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex-center;
     gap: 9px;
     .addedCount {
       color: black;
@@ -68,22 +62,17 @@
     }
   }
   .cartAdd {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include flex-center-space-between;
     justify-self: flex-end;
-
     .price {
       font-weight: bold;
       font-size: 24px;
     }
     button {
+      @include flex-center;
       background-color: green;
       border: none;
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       padding: 10px;
       transition: all 0.2s;
       &:hover {

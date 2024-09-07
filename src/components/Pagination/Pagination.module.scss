@@ -1,7 +1,6 @@
 .root {
+  @include flex-align-center;
   margin-top: 25px;
-  display: flex;
-  align-items: center;
   .nextArrow,
   .prevArrow {
     font-size: 23px;

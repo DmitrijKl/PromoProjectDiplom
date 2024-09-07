@@ -27,13 +27,12 @@
     }
   }
   .cartOrder {
+    @include flex-center-space-between;
     margin-top: 20px;
     padding-top: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     border-top: 2px solid #f6f6f6;
     .backHome {
+      @include flex-align-center;
       cursor: pointer;
       border: 1px solid #dddddd;
       background-color: white;
@@ -43,8 +42,6 @@
       font-weight: 600;
       border-radius: 30px;
       transition: all 0.3s;
-      display: flex;
-      align-items: center;
       gap: 5px;
       line-height: 16px;
       @media (max-width: 752px) {
@@ -84,9 +81,7 @@
     }
   }
   .cartOrderDescriptipn {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    @include flex-center-space-between;
     font-size: 24px;
     margin-top: 40px;
     @media (max-width: 752px) {
@@ -97,16 +92,13 @@
     }
   }
   .cartTitle {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    @include flex-center-space-between;
     margin-bottom: 20px;
     .cartClear {
+      @include flex-align-center;
       cursor: pointer;
       opacity: 0.5;
       font-size: 16px;
-      display: flex;
-      align-items: center;
       transition: all 0.2s;
       &:hover {
         opacity: 1;

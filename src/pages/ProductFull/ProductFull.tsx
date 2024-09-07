@@ -39,7 +39,7 @@ const ProductFull: React.FC = () => {
       }
     };
     fetchProduct();
-  }, [navigate, dispatch, id]);
+  }, [id]);
 
   const onClickAdd = () => {
     if (cartItem) {
